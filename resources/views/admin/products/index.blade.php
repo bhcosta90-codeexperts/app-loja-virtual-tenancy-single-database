@@ -16,7 +16,7 @@
                         <table class="w-full divide-y divide-gray-200">
                             <thead class="bg-gray-100">
                             <tr>
-                                <th scope="col" class="px-6 py-4 text-xs tracking-wider text-center text-gray-500 uppercase font-semi">
+                                <th scope="col" class="w-0 px-6 py-4 text-xs tracking-wider text-center text-gray-500 uppercase font-semi">
                                     #
                                 </th>
                                 <th scope="col" class="px-6 py-4 text-xs tracking-wider text-center text-gray-500 uppercase font-semi">

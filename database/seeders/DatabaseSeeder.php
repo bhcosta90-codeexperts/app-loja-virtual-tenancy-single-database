@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Store;
 use App\Models\Tenant;
 use App\Models\Product;
+use App\Models\Scopes\TenantScope;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ->hasStores(1)
             ->create();
         
-        foreach (Store::all() as $store) {
+        foreach (Store::withoutGlobalScope(TenantScope::class)->get() as $store) {
             $tenantAndStoreIds = ['store_id' => $store->id, 'tenant_id' => $store->tenant_id];
             Product::factory(20, $tenantAndStoreIds)->create();
             Category::factory(5, $tenantAndStoreIds)->create();
