@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex flex-col">
-                <div class="overflow-x-auto">
+                <div class="-my-2 overflow-x-auto">
                     <form action="{{route('admin.products.update', $product)}}" method="POST">
                         @csrf
                         @method('PUT')
@@ -29,7 +29,7 @@
 
                         <div class="w-full mb-8">
                             <label>Preço</label>
-                            <input type="number" name="price" class="w-full rounded focus:border-gray-400 focus:ring-0" value="{{number_format($product->price, 2, ',', '.')}}">
+                            <input type="text" name="price" class="w-full rounded focus:border-gray-400 focus:ring-0" value="{{number_format($product->price, 2, ',', '.')}}">
                         </div>
 
                         <div class="w-full mb-8">
@@ -37,9 +37,11 @@
                             <div class="grid grid-cols-3">
                                 @foreach($categories as $category)
                                     <div class="flex items-center mb-8">
-                                        <input type="checkbox" name="categories[]"
+                                        <label>
+                                            <input type="checkbox" name="categories[]"
                                                @if($product->categories->contains($category)) checked @endif
                                                value="{{$category->id}}" class="mr-2 rounded focus:border-gray-400 focus:ring-0"> {{$category->name}}
+                                        </label>
                                     </div>
                                 @endforeach
                             </div>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->text('body');
-            $table->integer('price');
+            $table->unsignedInteger('price');
             $table->string('image')->nullable();
             $table->string('slug');
 

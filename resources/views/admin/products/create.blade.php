@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex flex-col">
-                <div class="overflow-x-auto">
+                <div class="-my-2 overflow-x-auto">
                     <form action="{{route('admin.products.store')}}" method="POST">
                         @csrf
                         <div class="w-full mb-8">
@@ -36,7 +36,9 @@
                                 <div class="grid grid-cols-3">
                                 @forelse($categories as $category)
                                     <div class="flex items-center mb-8">
-                                        <input type="checkbox" name="categories[]" value="{{$category->id}}" class="mr-2 rounded focus:border-gray-400 focus:ring-0"> {{$category->name}}
+                                        <label>
+                                            <input type="checkbox" name="categories[]" value="{{$category->id}}" class="mr-2 rounded focus:border-gray-400 focus:ring-0"> {{$category->name}}
+                                        </label>
                                     </div>
                                 @empty
                                     <strong>Sem Categorias Cadastradas em sua Loja</strong>

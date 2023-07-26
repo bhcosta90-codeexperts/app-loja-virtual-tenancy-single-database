@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = $this->category->get('id', 'name');
+        $categories = $this->category->get(['id', 'name']);
         return view('admin.products.create', compact('categories'));
     }
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
 
         session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao cadastrar produto']);
 
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -63,8 +63,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = $this->category->get('id', 'name');
-        return view('admin.products.create', compact('categories', 'product'));
+        $categories = $this->category->get(['id', 'name']);
+        return view('admin.products.edit', compact('categories', 'product'));
     }
 
     /**
@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao atualizar produto']);
 
-        return redirect()->route('products.edit', $product);
+        return redirect()->route('admin.products.edit', $product);
     }
 
     /**
@@ -88,7 +88,7 @@ class ProductController extends Controller
     {
         $product->delete();
         session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao remover produto']);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
 
     }
 }
