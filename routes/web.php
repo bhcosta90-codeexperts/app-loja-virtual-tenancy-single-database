@@ -24,8 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('admin')->as('admin.')->middleware('auth')->group(function(){
-    Route::resource('products', Admin\ProductController::class);
-    Route::resource('categories', Admin\CategoryController::class);
+    Route::resource('products', Admin\ProductController::class)->except(['show']);
+    Route::resource('categories', Admin\CategoryController::class)->except(['show']);
 });
 
 Route::middleware('auth')->group(function () {
